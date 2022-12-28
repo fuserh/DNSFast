@@ -41,18 +41,6 @@ jobs:
           echo test, and deploy your project.
           chmod 777 ip.sh
           ./ip.sh $(cat ip.txt) >>hosts.txt
-      - name: commit
-        id: commit
-        run: |
-           git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
-           git config --global user.name github-actions[bot]
-           git add .
-           git commit -m "update readme content"
-        continue-on-error: true
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
